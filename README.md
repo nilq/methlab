@@ -1,31 +1,13 @@
 # methlab
 
-TODO: Write a description here
+This will be my approach on a representation of myself on the *international spiderweb*, and all-in-one big mess where I document projects, leave notes(school stuff done by mortals) and save interesting things
 
-## Installation
-
-
-TODO: Write installation instructions here
-
-
-## Usage
-
-
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[your-github-name]/methlab/fork )
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create a new Pull Request
+> I'm new to this Crystal thing, and will - for educational purposes - steal/rewrite *kamber*(of house/library *kemal*), and maybe improve and tweak things around.
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/[your-github-name]) Lord Niels N. Horn - creator, maintainer
+- [nilq](https://github.com/nilq) Lord Niels N. Horn - the one and only
+
+---
+
+- [reference(kamber)](https://github.com/f/kamber) Kamber - crystal blog thing - *look here for (maybe) license*
