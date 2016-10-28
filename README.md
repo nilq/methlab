@@ -1,6 +1,6 @@
 # methlab
 
-This will be my approach on a representation of myself on the *international spiderweb*, and all-in-one big mess where I document projects, leave notes(school stuff done by mortals) and save interesting things
+This will be my approach on a representation of myself on the *international spiderweb*; an all-in-one big mess where I document projects, leave notes(school stuff done by mortals) and save interesting things
 
 > I'm new to this Crystal thing, and will - for educational purposes - steal/rewrite *kamber*(of house/library *kemal*), and maybe improve and tweak things around.
 
