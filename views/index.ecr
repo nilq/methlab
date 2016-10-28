@@ -14,7 +14,9 @@
       </header>
       <% post = YAML.parse File.read("posts/posts.yml") %>
       <% post.each do |post| %>
-        <% if (YAML.parse File.read("posts/posts.yml"))["file"] %>
+        <% unless (YAML.parse File.read("posts/posts.yml"))["file"].as_s.nil? %>
+          <%= render "views/types/post.ecr" %>
+        <% end %>
       <% end %>
       <footer>
         <small>Powered by <a href="http://github.com/sdogruyol/kemal">kemal</a> and <a href="http://github.com/nilq/methlab">methlab</a></small>
@@ -23,3 +25,9 @@
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </body>
 </html>
+
+<!--
+<% if !(YAML.parse File.read("posts/posts.yml")).nil? %>
+  <%= render "views/types/post.ecr" %>
+<% end %>
+-->
