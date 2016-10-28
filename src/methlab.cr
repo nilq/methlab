@@ -1,69 +1,38 @@
 require "./methlab/*"
+require "./theme"
 
 require "markdown"
 require "yaml"
+
 require "kemal"
 
-require "kamber-theme-default" # temporary
+module Methlab
 
-$BLOG_TITLE = "Nilq's lab"
-$BLOG_DESCR = "stuff and things"
+  @@posts = YAML.parse File.read("posts/posts.yml")
 
-$posts = YAML.parse File.read("./posts/posts.yml")
+  def post_item(file)
+    post    = {} of String => String
+    content = ""
 
-def post_stuff(file)
-  post = {} of String => String
-  content = ""
+    puts "Hello, " + @@posts.as_s
 
-  $posts.each do |_p|
-    _p = _p.as_h as Hash
+    @@posts.each do |_post|
+      puts _post
+      _post = _post.as_h
 
-    if _p.has_key? "file"
-      if (_p["file"] as String).ends_with?("#{file}.md" as String)
-        post = _p
-
-        content = File.read(_p["file"] as String)
+      if _post.has_key? "file"
+        if _post["file"].ends_with?("#{file}.md")
+          post = _post
+          content = File.read(_post["file"])
+        end
       end
     end
+
+    theme_item(post, content)
   end
 
-  theme_item(post, content)
-end
-
-module Methlab
   get "/" do
     theme_index
-  end
-
-  get "/style/:path" do |e|
-    e.response.content_type = "text/css"
-
-    File.read theme_style(e.params.query["path"])
-  end
-
-  get "/script/:path" do |e|
-    e.response.content_type = "application/javascript"
-
-    File.read theme_script(e.params.query["path"])
-  end
-
-  get "/:post" do |e|
-    post_stuff(e.params.query["post"])
-  end
-
-  get "/:category/:post" do |e|
-    category = e.params.query["category"] as String
-
-    post = e.params.query["post"] as String
-    post_stuff(category + "/" + post)
-  end
-
-  get "/:category/:sub_category/:post" do |e|
-    category = e.params.query["category"] as String
-    sub_category = e.params.query["sub_category"] as String
-
-    post_name = e.params.query["post"] as String
-    post_stuff(category + "/" + sub_category + "/" + post_name)
   end
 
   Kemal.run
