@@ -6,7 +6,7 @@ def theme_script(path)
   "static/js/#{path}"
 end
 
-def theme_item(path)
+def theme_item
   "views/post.ecr"
 end
 

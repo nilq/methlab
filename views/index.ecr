@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style/main.css" media="screen" charset="utf-8">
+
+    <link rel="stylesheet" href="../style/main.css" media="screen" charset="utf-8">
+
     <title><%= "Nilq's lab"%></title>
   </head>
   <body>
@@ -12,9 +14,9 @@
       <header>
         <h1><%= "Nilq's lab" %> <small><%= "stuff on the international spiderweb" %></small></h1>
       </header>
-      <% post = YAML.parse File.read("posts/posts.yml") %>
-      <% post.each do |post| %>
-        <% unless (YAML.parse File.read("posts/posts.yml"))["file"].as_s.nil? %>
+      <% (YAML.parse File.read("posts/posts.yml")).each do |_post| %>
+        <% post = _post.as(Hash) %>
+        <% unless post["file"].as_s.nil? %>
           <%= render "views/types/post.ecr" %>
         <% end %>
       <% end %>
@@ -25,9 +27,3 @@
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </body>
 </html>
-
-<!--
-<% if !(YAML.parse File.read("posts/posts.yml")).nil? %>
-  <%= render "views/types/post.ecr" %>
-<% end %>
--->

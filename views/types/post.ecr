@@ -1,16 +1,17 @@
 <%
-  file = (post["file"].as_s)
+  file = ((YAML.parse File.read("posts/posts.yml"))["file"].as_s)
     .gsub(/\.md$/, "")
     .gsub(/^posts\//, "")
 %>
+
 <article class="post">
   <header>
     <h2>
-      <a href="/<%= file %>"><%= post["title"] %></a>
+      <a href="posts/<%= file %>"><%= (YAML.parse File.read("posts/posts.yml"))["title"] %></a>
     </h2>
-    <% if post["abstract"] %>
+    <% if (YAML.parse File.read("posts/posts.yml"))["abstract"] %>
       <p class="abstract">
-        <%= post["abstract"] %>
+        <%= (YAML.parse File.read("posts/posts.yml"))["abstract"] %>
       </p>
     <% end %>
   </header>

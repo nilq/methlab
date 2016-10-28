@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style/main.css" media="screen" charset="utf-8">
-    <title><%= "Nilq's stuff" %> | <%= post["title"] %></title>
+    <title><%= "Nilq's stuff" %> | <%= (YAML.parse File.read("posts/posts.yml"))["title"] %></title>
   </head>
   <body>
     <main>
@@ -17,18 +17,7 @@
         </div>
       </header>
       <article class="contents">
-        <%= Markdown.to_html contents %>
-        <% if post["disqus"] == "true" %>
-          <div id="disqus_thread"></div>
-          <script>
-          (function() { // DON'T EDIT BELOW THIS LINE
-          var d = document, s = d.createElement('script');
-          s.src = '//kamber-test.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-          })();
-          </script>
-        <% end %>
+        <%= Markdown.to_html content %>
       </article>
     </main>
   </body>
